@@ -37,21 +37,10 @@ public class InternetActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_internet);
-
-
-
         mContext = App.getContext();
-
-
-
         listViewMovies = (ListView) findViewById(R.id.movieList);
-
         moviesReaderController = new MoviesReaderController(this);
-
-
-
         listViewMovies.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override

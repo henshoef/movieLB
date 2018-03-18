@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements DownloadImageTask
     int i=0;
     String tempTitle;
 
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -75,6 +76,16 @@ public class MainActivity extends AppCompatActivity implements DownloadImageTask
                 LinearLayout.LayoutParams.WRAP_CONTENT
 
         );
+        // specifying vertical orientation
+
+
+
+
+
+        // creating LayoutParams - first parameter is width , second parameter is height
+
+
+
         imageViewDetails = new LinearLayout.LayoutParams(
                 Math.round(sizeW),
                 Math.round(sizeH)
@@ -87,12 +98,12 @@ public class MainActivity extends AppCompatActivity implements DownloadImageTask
     }
 
     public void setDisplayMovie(){
-        final TextView movieSampleName=new TextView(this);
-    movieSampleName.setText(movies.get(i).getName());
-    movieSampleName.setTextColor(getResources().getColor(R.color.white));
+        TextView movieSampleName=new TextView(this);
+        movieSampleName.setText(movies.get(i).getName());
+        movieSampleName.setTextColor(getResources().getColor(R.color.white));
         InputStream imageStream = this.getResources().openRawResource(R.raw.image);
         Bitmap bitmap = BitmapFactory.decodeStream(imageStream);
-         iv = new ImageView(this);
+        iv = new ImageView(this);
    //     iv.setLayoutParams(imageViewDetails);
 
     if (!movies.get(i).getImageUrl().equals("")) {
@@ -103,8 +114,8 @@ public class MainActivity extends AppCompatActivity implements DownloadImageTask
 
         iv.setImageBitmap(bitmap);
     }
-    mainLayout.addView(movieSampleName,TextViewDetails);
-    mainLayout.addView(iv,imageViewDetails);
+        mainLayout.addView(movieSampleName,TextViewDetails);
+        mainLayout.addView(iv,imageViewDetails);
     final CustomDialog cdd=new CustomDialog(MainActivity.this,movies.get(i).getName(),counter);
         iv.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -224,6 +235,7 @@ public void addMovie(Intent data){
                 return true;
             }
             case R.id.exit: {
+
                 finish();
                 return true;
             }
