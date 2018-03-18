@@ -23,11 +23,31 @@ public class AddMovie extends AppCompatActivity implements DownloadImageTask.Cal
     DownloadImageTask downloadImageTask;
     ImageView imageView;
     EditText urlET;
+    EditText title;
+    EditText description;
+    String movieName;
+    String desc;
+    String imageUrl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_movie);
         imageView=findViewById(R.id.imageView);
+        title = findViewById(R.id.title);
+        description = findViewById(R.id.descrition);
+        urlET = findViewById(R.id.url);
+        Intent i = getIntent();
+        state = i.getStringExtra("state");
+        if(state.equals("edit")) {
+            movieName = i.getStringExtra("name");
+            desc = i.getStringExtra("des");
+            imageUrl = i.getStringExtra("url");
+            title.setText(movieName);
+            description.setText(desc);
+            urlET.setText(imageUrl);
+        }
+
     }
 public void onShowClick(View v){
      urlET = findViewById(R.id.url);
@@ -40,13 +60,9 @@ public void onShowClick(View v){
 }
     public void onClickOk(View v) {
         Intent intent = getIntent();
-        state = intent.getStringExtra("state");
-        EditText title = findViewById(R.id.title);
-        EditText description = findViewById(R.id.descrition);
-        urlET = findViewById(R.id.url);
-            String movieName = title.getText().toString();
-            String desc = description.getText().toString();
-            String imageUrl = urlET.getText().toString();
+            movieName = title.getText().toString();
+            desc = description.getText().toString();
+            imageUrl = urlET.getText().toString();
             intent.putExtra("name", movieName);
             intent.putExtra("description", desc);
             intent.putExtra("url", imageUrl);

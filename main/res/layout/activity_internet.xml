@@ -42,13 +42,16 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@android:drawable/ic_menu_search"
+                    android:onClick="showMovies"
                     android:text="" />
             </LinearLayout>
 
             <ListView
                 android:id="@+id/movieList"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+
+                />
         </LinearLayout>
     </FrameLayout>
 </android.support.constraint.ConstraintLayout>

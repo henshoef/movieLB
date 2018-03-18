@@ -7,31 +7,29 @@ import android.content.Context;
  * Created by Android on 11/03/2018.
  */
 
-public class MovieSample extends android.support.v7.widget.AppCompatImageView {
+public class MovieSample{
      private  int id;
     private  String name;
     private  String decription;
     private  String imageUrl;
 
 
-    public MovieSample(Context context, int id, String name, String decription, String imageUrl) {
-        super(context);
+    public MovieSample(int id, String name, String decription, String imageUrl) {
         this.id = id;
         this.name = name;
         this.decription = decription;
         this.imageUrl = imageUrl;
     }
 
-    public MovieSample(Context context) {
-        super(context);
+    public MovieSample() {
+
     }
 
-    @Override
     public int getId() {
         return id;
     }
 
-    @Override
+
     public void setId(int id) {
         this.id = id;
     }

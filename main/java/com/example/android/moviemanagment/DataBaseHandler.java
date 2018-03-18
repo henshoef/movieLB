@@ -146,7 +146,7 @@ public class DataBaseHandler extends SQLiteOpenHelper{
 
 
 
-    public ArrayList<MovieSample> getAllMovieList(Context context) {
+    public ArrayList<MovieSample> getAllMovieList() {
 
         ArrayList<MovieSample> MovieList = new ArrayList<MovieSample>();
 
@@ -170,7 +170,7 @@ public class DataBaseHandler extends SQLiteOpenHelper{
 
 
 
-                MovieSample movie = new MovieSample(context);
+                MovieSample movie = new MovieSample();
 
                 movie.setId(Integer.parseInt(cursor.getString(0)));
 

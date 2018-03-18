@@ -17,7 +17,7 @@ package com.example.android.moviemanagment;
         import android.widget.Button;
 
 
-
+        import java.util.ArrayList;
         import java.util.List;
 
 
@@ -27,7 +27,6 @@ package com.example.android.moviemanagment;
  * Created by Android on 13/03/2018.
 
  */
-
 public class CustomDialog extends Dialog implements
 
         android.view.View.OnClickListener {
@@ -44,9 +43,9 @@ public class CustomDialog extends Dialog implements
 
     public int ID;
 
-   // MyDBHandler db;
+    DataBaseHandler db;
 
-    List<Movie> names;
+    ArrayList<MovieSample> names;
 
 
 
@@ -84,9 +83,9 @@ public class CustomDialog extends Dialog implements
 
         edit.setOnClickListener(this);
 
-       // db= new MyDBHandler(c);
+        db= new DataBaseHandler(c);
 
-       // names=db.getAllMovieList();
+        names=db.getAllMovieList();
 
 
 
@@ -94,50 +93,51 @@ public class CustomDialog extends Dialog implements
 
 
 
-   @Override
+    @Override
 
-   public void onClick(View v) {
+    public void onClick(View v) {
 
         switch (v.getId()) {
 
             case R.id.dialogDelete:
 
-            //    db.deleteMovie(ID);
+                db.deleteMovie(ID);
 
                 c.recreate();
 
                 break;
-//
-           case R.id.dialogEdit:
+
+            case R.id.dialogEdit:
 
                 int i=0;
 
-               // for(i=0;i<names.size();i++){
-                  //  if(NAME.equals(names.get(i).getSubject())){
+                for(i=0;i<names.size();i++){
 
-                      //  String title =names.get(i).getSubject();
+                    if(NAME.equals(names.get(i).getName())){
 
-                     //   String des =names.get(i).getBody();
+                        String title =names.get(i).getName();
 
-                      //  String url =names.get(i).getUrl();
+                        String des =names.get(i).getDecription();
 
-                     //   int id = names.get(i).get_id();
+                        String url =names.get(i).getImageUrl();
+
+                        int id = names.get(i).getId();
 
 
 
-                       Intent editActivity = new Intent(c,AddMovie.class);
+                        Intent editActivity = new Intent(c,AddMovie.class);
 
-                      //  editActivity.putExtra("name",title);
+                        editActivity.putExtra("name",title);
 
-                      //  editActivity.putExtra("des",des);
+                        editActivity.putExtra("des",des);
 
-                     //   editActivity.putExtra("url",url);
+                        editActivity.putExtra("url",url);
 
-                       // editActivity.putExtra("id",id);
+                        editActivity.putExtra("id",id);
 
                         c.startActivityForResult(editActivity,1);
 
-                       break;
+                        break;
 
                     }
 
@@ -147,14 +147,14 @@ public class CustomDialog extends Dialog implements
 
 
 
-            //default:
+            default:
 
-               // break;
+                break;
 
-       // }
+        }
 
-     //dismiss();
+        dismiss();
 
-
+    }
 
 }

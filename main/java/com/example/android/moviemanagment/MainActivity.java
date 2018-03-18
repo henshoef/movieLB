@@ -44,14 +44,15 @@ public class MainActivity extends AppCompatActivity implements DownloadImageTask
     DownloadImageTask downloadImageTask;
     private int resultCode;
     DataBaseHandler db;
-    int i;
+    int i=0;
     String tempTitle;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        App.setContext(this);
         db = new DataBaseHandler(this);
-        movies =db.getAllMovieList(this);
+        movies =db.getAllMovieList();
         i=0;
 
 
@@ -99,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements DownloadImageTask
         downloadImageTask.execute(movies.get(i).getImageUrl());
 
     }else{
-        
+
         iv.setImageBitmap(bitmap);
     }
     mainLayout.addView(movieSampleName,TextViewDetails);
@@ -108,19 +109,24 @@ public class MainActivity extends AppCompatActivity implements DownloadImageTask
         iv.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-        mainLayout.removeView(movieSample);
-        mainLayout.removeView(movieSampleName);
-
-
+            state = "edit";
+            Intent inte= new Intent (MainActivity.this,AddMovie.class);
+            String nameTest=movies.get(i).getName();
+            inte.putExtra("name",movies.get(i).getName());
+            inte.putExtra("des",movies.get(i).getDecription());
+            inte.putExtra("url",movies.get(i).getImageUrl());
+            inte.putExtra("id",1);
+            inte.putExtra("state","edit");
+            startActivityForResult(inte,1);
         }
     });
-//    iv.setOnLongClickListener(new View.OnLongClickListener() {
-//        @Override
-//        public boolean onLongClick(View view) {
-//            cdd.show();
-//            return false;
-//        }
-//    });
+    iv.setOnLongClickListener(new View.OnLongClickListener() {
+        @Override
+        public boolean onLongClick(View view) {
+           cdd.show();
+           return false;
+        }
+  });
 //    movies.add(movieSample);
 //    mainLayout.addView(movieSampleName, TextViewDetails);
 //    mainLayout.addView(movieSample, imageViewDetails);
@@ -140,11 +146,11 @@ public class MainActivity extends AppCompatActivity implements DownloadImageTask
         return true;
     }
 public void addMovie(Intent data){
-    state = "add";
+
     movieName = data.getStringExtra("name");
     movieDesc = data.getStringExtra("description");
     movieUrl = data.getStringExtra("url");
-    movieSample = new MovieSample(this, counter, movieName, movieDesc, movieUrl);
+    movieSample = new MovieSample(counter, movieName, movieDesc, movieUrl);
     db.addMovie(movieSample);
 //    final TextView movieSampleName=new TextView(this);
 //    movieSampleName.setText(movieName);
