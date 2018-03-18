@@ -122,10 +122,10 @@ public class MainActivity extends AppCompatActivity implements DownloadImageTask
         public void onClick(View view) {
             state = "edit";
             Intent inte= new Intent (MainActivity.this,AddMovie.class);
-            String nameTest=movies.get(i).getName();
-            inte.putExtra("name",movies.get(i).getName());
-            inte.putExtra("des",movies.get(i).getDecription());
-            inte.putExtra("url",movies.get(i).getImageUrl());
+          //  String nameTest=movies.get(i).getName();
+            inte.putExtra("name",movieName);
+            inte.putExtra("des",movieDesc);
+            inte.putExtra("url",movieUrl);
             inte.putExtra("id",1);
             inte.putExtra("state","edit");
             startActivityForResult(inte,1);

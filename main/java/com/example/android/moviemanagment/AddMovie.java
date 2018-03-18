@@ -67,7 +67,7 @@ public void onShowClick(View v){
             intent.putExtra("description", desc);
             intent.putExtra("url", imageUrl);
             if(movieName.equals("")){
-                Toast toast = Toast.makeText(this, "You must enter a movie name", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(this, getResources().getString(R.string.toast), Toast.LENGTH_SHORT);
                 toast.show();
             }else {
                 setResult(RESULT_OK, intent);

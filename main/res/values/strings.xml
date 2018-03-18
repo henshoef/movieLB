@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Movie Management</string>
+    <string name="app_name">Movie library</string>
     <string name="deleteAll">Delete all</string>
     <string name="exit">Exit</string>
     <string name="addMovieByManual">Add Movie Manual"</string>
@@ -15,5 +15,7 @@
     <string name="edit">edit</string>
     <string name="delete">delete</string>
     <string name="choose">Choose what action you want</string>
+    <string name="search">Search movie</string>
+    <string name="toast">You must enter a title</string>
 
 </resources>

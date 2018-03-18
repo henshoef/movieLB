@@ -16,5 +16,7 @@
     <string name="edit">ערוך</string>
     <string name="delete">מחק</string>
     <string name="choose">מה תרצה לעשות?</string>
+    <string name="search">חיפוש סרט</string>
+    <string name="toast">חובה להכניס שם את הסרט</string>
 
 </resources>
